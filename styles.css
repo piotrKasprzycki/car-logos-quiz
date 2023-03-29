@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -11,7 +12,6 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  font-family: "Lato", sans-serif;
 }
 
 #question {
@@ -52,6 +52,20 @@ body {
   border: 1px solid rgb(0, 0, 0);
   background: transparent;
   font-size: 1rem;
+}
+
+.correct {
+  border: 2px solid rgb(50, 205, 50);
+}
+
+.incorrect {
+  border: 2px solid rgb(220, 20, 60);
+}
+
+.correct,
+.incorrect {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
 }
 
 .btn:hover {
