@@ -47,10 +47,6 @@ const questions = [
     correct: "Polestar",
     incorrect: ["Volvo", "Saab", "Koenigsegg"],
   },
-  {
-    correct: "Polestar",
-    incorrect: ["Volvo", "Saab", "Koenigsegg"],
-  },
 ];
 
 let current = 0;
@@ -69,6 +65,7 @@ const renderQuestion = function (arr) {
 
 const startQuiz = function (arr) {
   random = arr.sort((a, b) => Math.random() - 0.5);
+  console;
   startBtn.classList.add("hide");
   quiz.classList.remove("hide");
   renderQuestion(random);
@@ -78,7 +75,7 @@ startBtn.addEventListener("click", () => {
   startQuiz(questions);
 });
 
-const checkQuestion = function (arr, btn) {
+const checkAnswear = function (arr, btn) {
   if (btn.textContent === arr[current].correct) {
     correctAnswear++;
     btn.classList.add("correct");
@@ -88,20 +85,20 @@ const checkQuestion = function (arr, btn) {
     question.textContent = `It appears to be a mistake. Correct answear is ${arr[current].correct}.`;
   }
   current++;
-  console.log(current);
   nextBtn.classList.remove("hide");
+  answearBtns.forEach((btn) => btn.classList.add("event-none"));
 };
 
 answearBtns.forEach((btn) =>
   btn.addEventListener("click", (e) => {
-    checkQuestion(random, e.target);
+    checkAnswear(random, e.target);
   })
 );
 
 const endQuiz = function (arr) {
-  startBtn.classList.remove("hide");
   quiz.classList.add("hide");
   nextBtn.classList.add("hide");
+  startBtn.classList.remove("hide");
   question.textContent = `Your score is ${Math.round(
     (correctAnswear / arr.length) * 100
   )}%`;
@@ -111,9 +108,15 @@ const endQuiz = function (arr) {
 };
 
 const nextQuestion = function (arr) {
-  if (current === arr.length) endQuiz(arr);
   nextBtn.classList.add("hide");
-  answearBtns.forEach((btn) => btn.classList.remove("correct", "incorrect"));
+  answearBtns.forEach((btn) =>
+    btn.classList.remove("correct", "incorrect", "event-none")
+  );
+  if (current === arr.length) {
+    endQuiz(arr);
+    return;
+  }
+  question.textContent = "Can You Name The Car Brand Based On The Logo?";
   renderQuestion(arr);
 };
 

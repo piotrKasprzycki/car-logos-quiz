@@ -3,6 +3,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --marginAndPadding: 45px;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -17,19 +21,20 @@ body {
 #question {
   flex-basis: 100%;
   text-align: center;
-  margin: 45px 0;
+  margin: var(--marginAndPadding) 32px;
   font-size: 1.5rem;
 }
 
 #container {
-  padding: 45px;
+  padding: var(--marginAndPadding);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
   width: 600px;
+  margin: 0 16px;
 }
 
 #logo-container {
-  padding-bottom: 45px;
+  padding-bottom: var(--marginAndPadding);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +42,8 @@ body {
 
 #logo-img {
   width: 200px;
+  height: 200px;
+  object-fit: contain;
 }
 
 #answears {
@@ -52,6 +59,7 @@ body {
   border: 1px solid rgb(0, 0, 0);
   background: transparent;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .correct {
@@ -80,9 +88,28 @@ body {
 }
 
 #next-btn {
-  margin-top: 45px;
+  margin-top: var(--marginAndPadding);
 }
 
 .hide {
   display: none;
+}
+
+.event-none {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 481px) {
+  :root {
+    --marginAndPadding: 25px;
+  }
+
+  #logo-img {
+    height: 150px;
+  }
+
+  .btn {
+    padding: 20px;
+    font-size: 1.1rem;
+  }
 }
