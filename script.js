@@ -64,6 +64,7 @@ const renderQuestion = function (arr) {
 };
 
 const startQuiz = function (arr) {
+  question.textContent = `Can You Name The Car Brand Based On The Logo?`;
   random = arr.sort((a, b) => Math.random() - 0.5);
   console;
   startBtn.classList.add("hide");
